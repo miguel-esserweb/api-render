@@ -1,11 +1,18 @@
 require('dotenv').config()
 const express = require("express");
 const QueueEmails = require('./utils/QueueEmails');
+var cors = require('cors')
 
 const app = express();
-const port = 3005;
+const port = 3000;
 app.use(express.json());
-
+app.use(cors({
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 204
+  }));
+  
 
 app.get("/", (req, res) => {
   res.send("Probando");
